@@ -1,7 +1,7 @@
-FROM python:3.9.9
+FROM ubuntu:20.04
+COPY ./requirements.txt /requirements.txt
 
-RUN python -m venv /py && 
-    /py/bin/pip install --upgrade pip && \
-    /py/bin/pip install -r /requirements.txt
-
-ENV PATH="/py/bin:$PATH"
+RUN apt-get update
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
+RUN pip3 install -r /requirements.txt
